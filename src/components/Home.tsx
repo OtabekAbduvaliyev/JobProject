@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
+import Grid from '@mui/material/Grid';
 import { 
   Box, 
   Typography, 
   Button,
-  Grid,
   Card,
   CardContent,
   IconButton,
@@ -209,6 +209,7 @@ const Home = () => {
             </Menu>
           </Box>
         </Box>
+
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
           <Typography variant="h4" sx={{ color: 'white' }}>
             You've got <span style={{ color: '#6C63FF' }}>{bookCount} book{bookCount !== 1 ? 's' : ''}</span>
@@ -225,12 +226,14 @@ const Home = () => {
             + Create a book
           </Button>
         </Box>
+
         <Typography variant="subtitle1" sx={{ color: 'white', mb: 2 }}>
           Your books today
         </Typography>
+
         <Grid container spacing={3}>
           {filteredBooks.map((book) => (
-            <Grid item xs={12} sm={6} md={4} key={book.id}>
+            <div key={book.id}>
               <Card sx={{ 
                 bgcolor: 'white',
                 borderRadius: 2,
@@ -330,10 +333,11 @@ const Home = () => {
                   </Button>
                 </Box>
               </Card>
-            </Grid>
+            </div>
           ))}
         </Grid>
       </Box>
+
       <Snackbar 
         open={alert.open} 
         autoHideDuration={3000} 
@@ -348,6 +352,7 @@ const Home = () => {
           {alert.message}
         </Alert>
       </Snackbar>
+
       <BookModal
         open={isModalOpen}
         onClose={handleCloseModal}
@@ -357,4 +362,5 @@ const Home = () => {
     </Box>
   );
 };
+
 export default Home;
