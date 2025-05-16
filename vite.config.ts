@@ -1,15 +1,12 @@
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
-  plugins: [tailwindcss(), react()],
-  optimizeDeps: {
-    include: ['@mui/material', '@mui/types']
-  },
+  plugins: [react()],
   resolve: {
     alias: {
-      '@mui/types': '@mui/types/index.d.ts'
-    }
-  }
+      '@mui/types': path.resolve(__dirname, './node_modules/@mui/types'),
+    },
+  },
 })
